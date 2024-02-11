@@ -34,7 +34,7 @@ public class FileParser {
                 case "--output-directory":
                     if (i + 1 < args.length) {
                         outputDirectory = args[i + 1];
-                        i++; // Skip the next argument
+                        i++; // Skip next argument
                     } else {
                         throw new IllegalArgumentException("Output directory not specified");
                     }
@@ -43,7 +43,7 @@ public class FileParser {
                 case "--output-prefix":
                     if (i + 1 < args.length) {
                         outputFilePrefix = args[i + 1];
-                        i++; // Skip the next argument
+                        i++; // Skip next argument
                     } else {
                         throw new IllegalArgumentException("Output file prefix not specified");
                     }
@@ -71,7 +71,6 @@ public class FileParser {
     public void filterAndWriteFiles() throws IOException {
         Map<String, List<String>> data = new HashMap<>();
 
-        // Process each input file
         for (String inputFile : inputFiles) {
             File file = new File(inputFile);
             if (!file.exists() || !file.isFile()) {
@@ -82,7 +81,6 @@ public class FileParser {
             processFile(file, data);
         }
 
-        // Write data to output files
         for (Map.Entry<String, List<String>> entry : data.entrySet()) {
             String dataType = entry.getKey();
             List<String> values = entry.getValue();
